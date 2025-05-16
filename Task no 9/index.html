@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Cards</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="card-container"></div>
+
+  <script>
+    const products = [
+      {
+        id: 1,
+        name: "Product no 01",
+        description: "High-quality product with modern features.",
+        price: 29.99,
+        currency: "USD",
+        inStock: true,
+        category: "Electronics",
+        tags: ["gadget", "tech", "new"],
+        createdAt: "2025-05-16T10:00:00Z",
+        updatedAt: "2025-05-16T10:00:00Z"
+      },
+      {
+        id: 2,
+        name: "Product no 02",
+        description: "Durable and affordable item for everyday use.",
+        price: 15.50,
+        currency: "USD",
+        inStock: false,
+        category: "Home & Kitchen",
+        tags: ["kitchen", "daily-use"],
+        createdAt: "2025-05-15T12:30:00Z",
+        updatedAt: "2025-05-15T12:30:00Z"
+      }
+    ];
+
+    const container = document.getElementsByClassName("card-container")[0];
+
+    // Use map to create card HTML strings and join them
+    const cardsHTML = products.map(product => {
+      return `
+        <div class="product-card">
+          <h3>${product.name}</h3>
+          <p><strong>Description:</strong> ${product.description}</p>
+          <p><strong>Price:</strong> ${product.price} ${product.currency}</p>
+          <p><strong>Category:</strong> ${product.category}</p>
+          <p><strong>Tags:</strong> ${product.tags.join(", ")}</p>
+          <p><strong>In Stock:</strong> ${product.inStock ? "Yes" : "No"}</p>
+          <p><small>Created at: ${product.createdAt}</small></p>
+        </div>
+      `;
+    }).join(""); // Convert array of HTML strings into one big string
+
+    container.innerHTML = cardsHTML; // Add all cards to the container at once
+  </script>
+
+</body>
+</html>
