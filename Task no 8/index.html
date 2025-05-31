@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// Capitalize the First Letter
+    let captial = "how are you";
+let result = captial[0].toUpperCase() + captial.slice(1);
+console.log(result); 
+
+// Remove First Character from String
+let val = "HelloWorld";
+let res= val.slice(1 ,5); 
+console.log(res); 
+
+//Using for...of:
+let name = "code";
+for (let ch of name) {
+  console.log(ch);
+}
+//Using for...in:
+for (let i in name) {
+  console.log(name[i]);
+}
+
+//Get Last N Characters of a String
+function getLastNChars(str, n) {
+  return str.slice(-n);
+}
+console.log(getLastNChars("developer", 4)); 
+
+//Count Words in a String
+let sentence = "JavaScript is fun to learn";
+let words = sentence.trim().split(" ");
+console.log(words.length); 
+    </script>
+</body>
+</html>
