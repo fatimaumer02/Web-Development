@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Grade Manager</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h2>Student Grade Manager</h2>
+
+    <input id="name" type="text" placeholder="Student Name">
+    <input id="marks" type="number" placeholder="Marks">
+    <button onclick="addStudent()">Add Student</button>
+
+    <h3>Student List:</h3>
+    <ul id="studentList"></ul>
+
+    <div class="average">
+      Average: <span id="average">0</span>
+    </div>
+  </div>
+
+  <script>
+    let students = [];
+
+    function addStudent() {
+      let name = document.getElementById("name").value.trim();
+      let marks = Number(document.getElementById("marks").value);
+
+      if (name === "" || isNaN(marks)) {
+        alert("Please enter valid name and marks.");
+        return;
+      }
+
+      if (marks < 0 || marks > 100) {
+        alert("Please enter marks between 0 and 100.");
+        return;
+      }
+
+      students.push({ name, marks });
+      document.getElementById("name").value = "";
+      document.getElementById("marks").value = "";
+
+      showStudents();
+    }
+
+    function deleteStudent(index) {
+      students.splice(index, 1);
+      showStudents();
+    }
+
+    function showStudents() {
+      let list = document.getElementById("studentList");
+      list.innerHTML = "";
+
+      let total = 0;
+
+      students.forEach((student, i) => {
+        let li = document.createElement("li");
+
+        if (student.marks < 40) {
+          li.classList.add("low-score");
+        }
+
+        li.innerHTML = `
+          ${student.name} - ${student.marks}
+          <button class="delete-btn" onclick="deleteStudent(${i})">Delete</button>
+        `;
+
+        list.appendChild(li);
+        total += student.marks;
+      });
+
+      let avg = students.length ? (total / students.length).toFixed(2) : 0;
+      document.getElementById("average").innerText = avg;
+    }
+  </script>
+
+</body>
+</html>
