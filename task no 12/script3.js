@@ -1,4 +1,3 @@
-// main.js
 
 import { spreadString } from './script.js';
 import { mergeArrays } from './script.js';
